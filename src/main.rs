@@ -6,14 +6,11 @@ use embedded_hal::digital::v2::OutputPin;
 use panic_halt as _;
 
 use nrf52840_hal as hal;
+
 use hal::pac::{CorePeripherals, Peripherals};
 use hal::prelude::*;
 use hal::gpio::Level;
 use hal::delay::Delay;
-
-//use nrf52840_hal::gpio::Level;
-//use nrf52840_hal::delay::Delay;
-//use nrf52840_hal::prelude::*;
 
 #[cortex_m_rt::entry]
 fn main() -> ! {
@@ -31,7 +28,7 @@ fn main() -> ! {
         led.set_high().unwrap();
         delay.delay_ms(500_u32);              
         led.set_low().unwrap();
-        delay.delay_ms(500_u32);
+        delay.delay_ms(1000_u32);
     }
     
 }
