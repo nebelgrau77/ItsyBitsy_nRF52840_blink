@@ -1,8 +1,6 @@
 #![no_main]
 #![no_std]
 
-use embedded_hal::digital::v2::OutputPin;
-
 use panic_halt as _;
 
 use nrf52840_hal as hal;
@@ -12,7 +10,9 @@ use hal::prelude::*;
 use hal::gpio::Level;
 use hal::delay::Delay;
 
-#[cortex_m_rt::entry]
+use cortex_m_rt::entry;
+
+#[entry]
 fn main() -> ! {
     
     let p = Peripherals::take().unwrap();
@@ -26,9 +26,9 @@ fn main() -> ! {
     loop {       
         
         led.set_high().unwrap();
-        delay.delay_ms(500_u32);              
+        delay.delay_ms(1000_u32);              
         led.set_low().unwrap();
-        delay.delay_ms(1000_u32);
+        delay.delay_ms(500_u32);
     }
     
 }
